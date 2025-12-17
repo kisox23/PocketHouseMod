@@ -1,5 +1,8 @@
 package com.example.examplemod;
 
+import com.example.examplemod.block.ModBlocks;
+import com.example.examplemod.block.entity.ModBlockEntities;
+import com.example.examplemod.item.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -81,6 +84,10 @@ public class ExampleMod {
         // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
         NeoForge.EVENT_BUS.register(this);
 
+        ModBlocks.BLOCKS.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
+
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -103,8 +110,8 @@ public class ExampleMod {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(EXAMPLE_BLOCK_ITEM);
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.POCKET_HOUSE);
         }
     }
 
