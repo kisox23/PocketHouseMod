@@ -1,7 +1,7 @@
-package com.example.examplemod.block.entity;
+package com.dec4lcomania.pockethouse.block.entity;
 
-import com.example.examplemod.HouseManager;
-import com.example.examplemod.item.ModItems;
+import com.dec4lcomania.pockethouse.HouseManager;
+import com.dec4lcomania.pockethouse.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;

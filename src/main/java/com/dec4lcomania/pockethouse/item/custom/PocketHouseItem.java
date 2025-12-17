@@ -1,7 +1,7 @@
-package com.example.examplemod.item.custom;
+package com.dec4lcomania.pockethouse.item.custom;
 
-import com.example.examplemod.block.ModBlocks;
-import com.example.examplemod.block.entity.HouseCoreBlockEntity;
+import com.dec4lcomania.pockethouse.block.ModBlocks;
+import com.dec4lcomania.pockethouse.block.entity.HouseCoreBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -120,7 +120,7 @@ public class PocketHouseItem extends Item {
     }
 
     private BoundingBox spawnHouse(Level level, BlockPos origin, Rotation rotation, Player player) {
-        ResourceLocation rl = ResourceLocation.fromNamespaceAndPath("examplemod", "pocket_house_structure");
+        ResourceLocation rl = ResourceLocation.fromNamespaceAndPath("pockethouse", "pocket_house_structure");
         StructureTemplate template = level.getServer().getStructureManager().get(rl).orElseThrow();
         StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation).setIgnoreEntities(false);
 

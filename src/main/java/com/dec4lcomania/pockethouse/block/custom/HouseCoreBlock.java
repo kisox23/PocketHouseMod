@@ -1,6 +1,6 @@
-package com.example.examplemod.block.custom;
+package com.dec4lcomania.pockethouse.block.custom;
 
-import com.example.examplemod.block.entity.HouseCoreBlockEntity;
+import com.dec4lcomania.pockethouse.block.entity.HouseCoreBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;

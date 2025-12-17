@@ -1,9 +1,7 @@
-package com.example.examplemod.block.custom;
+package com.dec4lcomania.pockethouse.block.custom;
 
-import com.example.examplemod.block.entity.HouseCoreBlockEntity;
+import com.dec4lcomania.pockethouse.block.entity.HouseCoreBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ButtonBlock;

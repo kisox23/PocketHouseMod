@@ -1,7 +1,7 @@
-package com.example.examplemod.item;
+package com.dec4lcomania.pockethouse.item;
 
-import com.example.examplemod.ExampleMod;
-import com.example.examplemod.item.custom.PocketHouseItem;
+import com.dec4lcomania.pockethouse.PocketHouseMod;
+import com.dec4lcomania.pockethouse.item.custom.PocketHouseItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModItems {
     //register the item in the game
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(ExampleMod.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PocketHouseMod.MODID);
     //deferred item
     public static final DeferredItem<Item> POCKET_HOUSE = ITEMS.register("pocket_house",
             () -> new PocketHouseItem(new Item.Properties()));

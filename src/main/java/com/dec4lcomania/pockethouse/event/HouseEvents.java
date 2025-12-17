@@ -1,14 +1,14 @@
-package com.example.examplemod.event;
+package com.dec4lcomania.pockethouse.event;
 
-import com.example.examplemod.ExampleMod;
-import com.example.examplemod.HouseManager;
+import com.dec4lcomania.pockethouse.PocketHouseMod;
+import com.dec4lcomania.pockethouse.HouseManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 
-@EventBusSubscriber(modid = ExampleMod.MODID)
+@EventBusSubscriber(modid = PocketHouseMod.MODID)
 public class HouseEvents {
     @SubscribeEvent
     public static void onHarvestDrops(BlockDropsEvent event) {

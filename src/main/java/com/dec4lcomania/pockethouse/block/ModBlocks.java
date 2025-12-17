@@ -1,9 +1,9 @@
-package com.example.examplemod.block;
+package com.dec4lcomania.pockethouse.block;
 
-import com.example.examplemod.ExampleMod;
-import com.example.examplemod.block.custom.HouseButtonBlock;
-import com.example.examplemod.block.custom.HouseCoreBlock;
-import com.example.examplemod.item.ModItems;
+import com.dec4lcomania.pockethouse.PocketHouseMod;
+import com.dec4lcomania.pockethouse.block.custom.HouseButtonBlock;
+import com.dec4lcomania.pockethouse.block.custom.HouseCoreBlock;
+import com.dec4lcomania.pockethouse.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS =
-            DeferredRegister.createBlocks(ExampleMod.MODID);
+            DeferredRegister.createBlocks(PocketHouseMod.MODID);
 
     public static final DeferredBlock<Block> HOUSE_CORE_BLOCK = registerBlock("house_core_block",
             () -> new HouseCoreBlock(BlockBehaviour.Properties.of()));

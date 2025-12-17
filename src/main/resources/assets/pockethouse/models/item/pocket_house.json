@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "examplemod:item/pocket_house"
+    "layer0": "pockethouse:item/pocket_house"
   }
 }
