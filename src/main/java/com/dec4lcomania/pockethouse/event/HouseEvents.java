@@ -7,6 +7,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
+import net.neoforged.neoforge.event.level.LevelEvent;
 
 @EventBusSubscriber(modid = PocketHouseMod.MODID)
 public class HouseEvents {
@@ -22,6 +23,13 @@ public class HouseEvents {
             HouseManager.removeBlock(pos);
             event.getDrops().clear();
         }
+    }
+
+    @SubscribeEvent
+    public static void onLevelUnload(LevelEvent.Unload event) {
+        Level level = (Level) event.getLevel();
+        if (level.isClientSide()) return;
+        HouseManager.clearLevel(level);
     }
 }
 

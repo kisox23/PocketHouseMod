@@ -30,6 +30,10 @@ public class HouseCoreBlockEntity extends BlockEntity {
         HouseManager.register(this);
     }
 
+    public UUID getHouseID() {
+        return this.houseID;
+    }
+
     public BoundingBox getBox() {
         return this.box;
     }
@@ -120,13 +124,13 @@ public class HouseCoreBlockEntity extends BlockEntity {
         }
     }
 
+    //quando carica il chunk che contiene la blockentity
     @Override
     public void onLoad() {
         if (!level.isClientSide() && box != null) {
             HouseManager.register(this);
         }
     }
-
 }
 
 //ordine logico

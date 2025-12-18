@@ -28,6 +28,10 @@ public class HouseManager {
         );
     }
 
+    public static boolean isActive(HouseCoreBlockEntity core) {
+        return ACTIVE_HOUSES.contains(core);
+    }
+
     public static void unregister(HouseCoreBlockEntity core) {
         ACTIVE_HOUSES.remove(core);
         BlockPos.betweenClosed(
@@ -51,5 +55,11 @@ public class HouseManager {
 
     public static void removeBlock(BlockPos pos) {
         HOUSE_BLOCKS.remove(pos);
+    }
+
+    public static void clearLevel(Level level) {
+        ACTIVE_HOUSES.removeIf(core ->
+            core.getLevel()== level
+        );
     }
 }
