@@ -40,6 +40,10 @@ public class PocketHouseItem extends Item {
         Direction right = forward.getClockWise();
         BlockPos origin = clicked.relative(forward, 6);
         origin = origin.relative(right, 3);
+        BlockPos core = origin
+                .relative(forward.getOpposite())
+                .relative(right.getOpposite())
+                .above();
 
         BlockPos center = origin
                 .relative(forward.getOpposite(), 3)
@@ -78,7 +82,7 @@ public class PocketHouseItem extends Item {
 
         if (!level.isClientSide()) {
             BoundingBox box = spawnHouse(level, origin.above(), rotation, player);
-            level.setBlock(center, ModBlocks.HOUSE_CORE_BLOCK.get().defaultBlockState(), 3);
+            level.setBlock(core, ModBlocks.HOUSE_CORE_BLOCK.get().defaultBlockState(), 3);
             level.setBlock(
                     origin.above().relative(forward.getOpposite(), 1),
                     ModBlocks.HOUSE_BUTTON_BLOCK.get().defaultBlockState()
@@ -87,9 +91,9 @@ public class PocketHouseItem extends Item {
                     3
             );
 
-            BlockEntity be = level.getBlockEntity(center);
-            if (be instanceof HouseCoreBlockEntity core) {
-                core.init(box);
+            BlockEntity be = level.getBlockEntity(core);
+            if (be instanceof HouseCoreBlockEntity c) {
+                c.init(box);
             }
             context.getItemInHand().shrink(1);
         }
@@ -107,11 +111,13 @@ public class PocketHouseItem extends Item {
             for (int dz = -radius; dz <= radius; dz++) {
                 BlockPos pos = center.offset(dx, 0, dz);
                 BlockState state = level.getBlockState(pos);
+
                 if (state.isAir() || state.getCollisionShape(level, pos).isEmpty()) {
                     return false;
                 }
+
                 BlockPos above = pos.above();
-                if (!level.getBlockState(above).isAir()) {
+                if (!level.getBlockState(above).getCollisionShape(level, above).isEmpty()) {
                     return false;
                 }
             }
@@ -123,8 +129,6 @@ public class PocketHouseItem extends Item {
         ResourceLocation rl = ResourceLocation.fromNamespaceAndPath("pockethouse", "pocket_house_structure");
         StructureTemplate template = level.getServer().getStructureManager().get(rl).orElseThrow();
         StructurePlaceSettings settings = new StructurePlaceSettings().setRotation(rotation).setIgnoreEntities(false);
-
-        level.playLocalSound(player, SoundEvents.FIREWORK_ROCKET_TWINKLE, SoundSource.AMBIENT, 50, 0);
 
         assert level instanceof ServerLevel;
         template.placeInWorld(

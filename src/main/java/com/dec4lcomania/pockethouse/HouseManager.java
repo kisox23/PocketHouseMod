@@ -16,6 +16,7 @@ public class HouseManager {
     }
 
     public static void register(HouseCoreBlockEntity core) {
+        if (core.getLevel().isClientSide()) return;
         ACTIVE_HOUSES.add(core);
         BlockPos.betweenClosed(
                 core.getBox().minX(), core.getBox().minY(), core.getBox().minZ(),
@@ -28,11 +29,8 @@ public class HouseManager {
         );
     }
 
-    public static boolean isActive(HouseCoreBlockEntity core) {
-        return ACTIVE_HOUSES.contains(core);
-    }
-
     public static void unregister(HouseCoreBlockEntity core) {
+        if (core.getLevel().isClientSide()) return;
         ACTIVE_HOUSES.remove(core);
         BlockPos.betweenClosed(
                 core.getBox().minX(), core.getBox().minY(), core.getBox().minZ(),
@@ -59,7 +57,7 @@ public class HouseManager {
 
     public static void clearLevel(Level level) {
         ACTIVE_HOUSES.removeIf(core ->
-            core.getLevel()== level
+            core.getLevel() == level
         );
     }
 }
